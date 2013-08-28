@@ -6,13 +6,13 @@ Simple utils to ease publishing to github pages for how we choose to structure o
 Expected repository structure
 -----------------------------
 
-&lt;entity>/&lt;code-repo-name>
+**&lt;entity>/&lt;code-repo-name>**
 
 Branches:
 * gh-pages - where we publish our documentation to and where github expects to find it, and which contains top-level documentation which is not version specific
 * Others as required by the library
 
-&lt;entity>/&lt;code-repo-name>-documentation
+**&lt;entity>/&lt;code-repo-name>-documentation**
 
 Branches:
 * One for each code branch except "gh-pages"
