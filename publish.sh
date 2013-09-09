@@ -8,6 +8,11 @@ REPO=$1
 VERSION=$2
 USER=$3
 
+if [ -z "$USER" ]; then
+  echo "Usage: publish.sh <repo> <version> <gh-user>"
+  exit 1
+fi
+
 echo "Repository: $REPO"
 echo "Version: $VERSION"
 
