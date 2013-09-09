@@ -22,7 +22,13 @@ Publishing branch documentation
 
 Run:
 
-    ./publish.sh <entity/code-repo-name> <branch-name> <github-username>
+```
+./publish.sh <entity/code-repo-name> <branch-name> <github-username>
+e.g.
+./publish.sh betfair/maven-test-process-plugin master eswdd
+```
+
+
 
 Which will perform the following:
 
