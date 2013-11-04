@@ -26,6 +26,7 @@ if [ $VERSION == "master" ]; then
 #  exit 1
 fi
 
+# todo: removing old master content? Manual for now
 if [ -d gh-pages/$VERSION ]; then
   echo "Cleaning out old site content for branch $VERSION"
   cd gh-pages
@@ -33,18 +34,27 @@ if [ -d gh-pages/$VERSION ]; then
   cd ..
 fi
 
+PAGES_DIR=gh-pages/$VERSION
+if [ $VERSION == "master" ]; then
+  PAGES_DIR=gh-pages
+fi
+
 echo "Generating maven site"
-mkdir -p gh-pages/$VERSION/maven
+mkdir -p $PAGES_DIR/maven
 cd source
-mvn site:site site:deploy -Dsite.deploy.dir=$TMP_DIR/gh-pages/$VERSION/maven
+mvn site:site site:deploy -Dsite.deploy.dir=$TMP_DIR/$PAGES_DIR/maven
 cd ..
 
 echo "Copying maven site into place"
-cp -R doco-source/* gh-pages/$VERSION
+cp -R doco-source/* $PAGES_DIR
 
 echo "Telling git about our changes"
 cd gh-pages
-find $VERSION -exec git add {} \;
+if [ $VERSION == "master" ]; then
+  find . -exec git add {} \;
+else
+  find $VERSION -exec git add {} \;
+fi
 cd ..
 
 echo "Pushing to live"
